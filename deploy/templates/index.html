@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>TITLE</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<style>
+
+
+
+body{
+background-image:url("{{ url_for('static', filename='image/bg6.jpg') }}");
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100% 100%;
+
+}
+.white{
+color:#090d37;
+}
+
+.space{
+margin:10px 30px;
+padding:15px 10px;
+background: #c7d1d6;
+width:500px
+}
+.gap{
+padding:10px 20px;
+text-align: center;
+}
+
+.main{
+  margin-top:350px;
+}
+</style>
+  
+</head>
+
+	<div class="container">
+	<h1 style="text-align:center; color:white"> FAKE IMAGE DETECTOR</h1> 
+	
+
+	</div>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form class="form-group" action="{{ url_for('predict')}}"method="post">
+    		<center>
+
+
+          <div class ="main">
+<label style="color:white"> Upload your Image Here </label>
+	 <input type="file" id="myFile" name="filename">
+
+
+<div style="padding:2% 1%; text-align:center">
+  <button type="submit" class="btn btn-warning" style="width:160px;padding:10px">Predict</button>		
+</div>
+
+ </div>
+      </center>
+    </form>
+
+   <br>
+   <br>
+
+<div  style="background:#2e56b3;color:white; padding:2% 40%">
+   {{ prediction_text }}<br>
+     {{ accuracy }}
+
+</div>
+
+ </div>
+
+
+</body>
+</html>
